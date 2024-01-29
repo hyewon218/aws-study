@@ -6,7 +6,7 @@
 트래픽(부하)를 적절하게 분배해주는 장치를 보고 전문적인 용어로 로드밸런서(Load Balancer)라고 부른다.<br> 
 서버를 2대 이상 가용할 때 ELB를 필수적으로 도입하게 된다. 
 
-<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/b2044505-6f5b-4f91-8f0b-eb949f3ef7b0" width="60%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/b2044505-6f5b-4f91-8f0b-eb949f3ef7b0" width="40%"/><br>
 
 > 하지만 지금은 ELB의 로드밸런서 기능을 사용하지 않고, ELB의 부가 기능인 **SSL/TLS(HTTPS)를 적용시키는 방법**에 대해 배울 것이다.
 
@@ -24,7 +24,7 @@
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/635cd71b-c5ed-4880-b0eb-225107c1633c" width="60%"/><br>
 
 ### ✅ 현업에서는 ?
-대부분의 웹 사이트에서 HTTPS를 적용시킨다.
+대부분의 웹 사이트에서 HTTPS를 적용시킨다.<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/ce72aa66-eaf6-46ab-a3a6-cf931dbbad09" width="60%"/><br>
 HTTPS 인증을 받은 웹 사이트가 백엔드 서버와 통신하려면, 백엔드 서버의 주소도 HTTPS 인증을 받아야 한다.<br> 
 따라서 백엔드 서버와 통신할 때도 IP 주소로 통신하는 게 아니라, HTTPS 인증을 받은 도메인 주소로 통신을 한다. 
@@ -37,7 +37,7 @@ HTTPS 인증을 받은 웹 사이트가 백엔드 서버와 통신하려면, 백
 
 ## ELB를 활용한 아키텍처 구성
 ### ✅ ELB를 활용한 아키텍처 구성
-<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/f4466d76-639d-4dbc-be70-2cc0fcf4b810" width="60%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/f4466d76-639d-4dbc-be70-2cc0fcf4b810" width="30%"/><br>
 ELB 도입 전 아키텍처<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/77ffc65f-83d2-4090-b0c9-4e4adfb08f97" width="50%"/><img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/470f0ee1-e531-4c9a-9f9a-ba4157baacf3" width="50%"/><br>
 ELB 도입 후 아키텍처<br>
@@ -50,8 +50,8 @@ ELB를 사용하기 전의 아키텍처는 사용자들이 EC2의 IP 주소 또�
 
 ## [실습] 1. ELB 셋팅하기 - 기본 구성
 ### ✅ 1. 리전 선택하기
-`AWS EC2` `로드밸런서` 서비스로 들어가서 리전(Region)을 선택해야 한다.
-<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/9faa5eb7-7662-4af3-af19-2c40fbc3dd92" width="30%"/><img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/32ee4237-41fc-4d84-9623-184c36a84c4e" width="40%"/><br>
+`AWS EC2` `로드밸런서` 서비스로 들어가서 리전(Region)을 선택해야 한다.<br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/9faa5eb7-7662-4af3-af19-2c40fbc3dd92" width="20%"/><img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/32ee4237-41fc-4d84-9623-184c36a84c4e" width="40%"/><br>
 
 ### ✅ 2. 로드 밸런서 유형 선택하기
 **2.1. 로드 밸런서 생성하기**<br>
@@ -176,7 +176,7 @@ ELB의 부가 기능으로 상태 검사(= Health Check, 헬스 체크) 기능�
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/8dd30cd8-2720-4e86-a7de-7fb89731a12f" width="60%"/><br>
 
 **2. 검증 완료**<br>
-3분 정도 기다렸다가 AWS Certificate Manager 창을 새로고침하면 아래와 같이 검증이 완료된다. (길게는 10분 정도 소요될 때도 있다.)
+3분 정도 기다렸다가 AWS Certificate Manager 창을 새로고침하면 아래와 같이 검증이 완료된다. (길게는 10분 정도 소요될 때도 있다.)<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/2ec3e67f-8691-4710-8fe0-4209795d0919" width="60%"/><br>
 
 <br>
