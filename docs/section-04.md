@@ -17,11 +17,11 @@ AWS에 대해 공부하면서 검색하다보면 하나의 EC2에 백엔드 서�
 
 EC2에 MySQL을 설치하면 별도의 RDS의 비용이 나오지 않기 때문에 비용을 절감할 수 있다.<br> 
 비용의 이점 때문에 학생 때 자주 활용했던 구성 방법이다.<br> 
-하지만 실제 현업에서는 하나의 EC2에 백엔드 서버와 MySQL을 같이 사용하지 않는다.<br> 
-왜냐하면 백엔드 서버에 장애로 인해 EC2 컴퓨터가 죽을 경우, 애꿎은 MySQL도 같이 죽기 때문이다.<br> 
-또한 RDS가 제공하는 부가적인 편리한 기능이 많아서 MySQL을 직접 설치해서 쓰지 않고 RDS를 쓰기도 한다.
+하지만 **실제 현업에서는 하나의 EC2에 백엔드 서버와 MySQL을 같이 사용하지 않는다.**<br> 
+왜냐하면 **백엔드 서버에 장애로 인해 EC2 컴퓨터가 죽을 경우, 애꿎은 MySQL도 같이 죽기 때문이다.**<br> 
+또한 `RDS`가 제공하는 **부가적인 편리한 기능**이 많아서 MySQL을 직접 설치해서 쓰지 않고 RDS를 쓰기도 한다.
 
-정리하자면 현업에서는 EC2와 RDS를 분리해서 인프라를 구성하는 경우가 대부분이다.<br> 
+정리하자면 현업에서는 **EC2와 RDS를 분리**해서 인프라를 구성하는 경우가 대부분이다.<br> 
 하지만 비용이 부담된다면 하나의 EC2에 백엔드 서버와 MySQL을 직접 설치해서 사용해도 무방하다. 
 
 <br>
@@ -55,7 +55,7 @@ EC2에 MySQL을 설치하면 별도의 RDS의 비용이 나오지 않기 때문�
 
 ## ✅ 6. 연결
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/63eb2d8f-b702-4fd3-b251-277b6e647be8" width="60%"/><br>
-나중에 보안에 조금 더 신경써서 구성하고 싶을 때는 퍼블릭 액세스를 아니오로 체크하고 RDS를 만들 때도 있다.<br> 
+나중에 보안에 조금 더 신경써서 구성하고 싶을 때는 `퍼블릭 액세스`를 아니오로 체크하고 RDS를 만들 때도 있다.<br> 
 하지만 입문할 때는 불편하기 때문에 퍼블릭 액세스를 예로 두고 많이 사용한다. 
 
 이렇게 설정하면 보안적으로 치명적인 위험이 있지 않을까 걱정하는 분들이 있다. 생각보다 그렇진 않다.<br> 
@@ -74,4 +74,53 @@ EC2에 MySQL을 설치하면 별도의 RDS의 비용이 나오지 않기 때문�
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/ec41871c-5961-4227-9bb3-6228af70381f" width="60%"/><br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/a75ee80a-da68-4af9-8113-f74f7c16e912" width="60%"/><br>
 
+<br>
 
+# [실습] 2. 보안그룹 설정하기
+## ✅ 1. 보안그룹 생성하기
+
+### ‘AWS EC2 - 보안 그룹’ 메뉴 선택
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/b9e3c2e8-9b20-4d89-89ff-152d26ff04a7" width="20%"/><br>
+
+### 인바운드 규칙, 아웃바운드 규칙 설정하기
+별도의 설정을 하지 않았다면 RDS의 MySQL은 3306번 포트에서 실행된다. DB에 접근하기 위해 `3306`번 포트를 인바운드 규칙에 추가해주자.<br>
+아웃바운드 규칙에는 모든 트래픽을 허용하는 규칙을 추가해주자.<br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/9e548a36-f36f-43dc-a651-8416f11705be" width="60%"/><br>
+
+
+## ✅ 2. 생성한 보안그룹을 RDS에 붙이기
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/ad92d76d-9e99-4f75-aacd-91a87573fe49" width="60%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/6a571d52-7908-49e2-95a5-7d35581699d3" width="60%"/><br>
+
+<br>
+
+## [실습] 3. 파라미터 그룹 추가하기
+### ✅ 파라미터 그룹 생성하기
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/e7cc63f3-03be-4fdb-8f63-5b81447a0c84" width="20%"/><br>
+**1. 아래 속성 전부 `utf8mb4`로 설정하기**<br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/1d0f04a1-f621-406d-a9b8-1a16f7b38412" width="100%"/><br>
+- `character_set_client`
+- `character_set_connection`
+- `character_set_database`
+- `characater_set_filesystem`
+- `characater_set_results`
+- `character_set_server`
+
+**참고)** `utf8` 대신에 `utf8mb4`를 사용하는 이유는 ‘한글’ 뿐만 아니라 ‘이모티콘’도 지원이 가능하도록 하기 위해서이다.
+
+**2. 아래 속성 전부 `utf8mb4_unicode_ci`로 설정하기**
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/1874065b-87fc-4426-b315-a83a2b02dc00" width="100%"/><br>
+- `collation_connection`
+- `collation_server`
+
+**참고)** `utf8mb4_unicode_ci`은 정렬, 비교 방식을 나타낸다.
+
+**3. `time_zone`을 `Asia/Seoul`로 설정하기**
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/05a9679f-fedf-449b-a066-503daed3bac4" width="100%"/><br>
+
+### ✅ RDS의 파라미터 그룹 변경하기
+RDS의 DB 인스턴스 수정을 통해 DB 파라미터 그룹 변경하면 된다.
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/0d4fc5cc-f30c-4eba-a8fa-fa02296502f3" width="60%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/e1d99803-a6ba-402d-a2e9-2e258929fa23" width="60%"/><br>
+
+**주의) DB 파라미터 그룹을 변경한 뒤에는 RDS의 DB를 재부팅해야만 정상적으로 적용된다.**
