@@ -6,3 +6,5 @@
 2. [section-02 : 도메인 연결하기 (Route 53)](https://github.com/hyewon218/aws-study/blob/master/docs/section-02.md)
 3. [section-03 : HTTPS 연결하기 (ELB)](https://github.com/hyewon218/aws-study/blob/master/docs/section-03.md)
 4. [section-04 : 데이터베이스 연결하기 (RDS)](https://github.com/hyewon218/aws-study/blob/master/docs/section-04.md)
+5. [section-05 : 파일 및 이미지 업로드 (S3)](https://github.com/hyewon218/aws-study/blob/master/docs/section-05.md)
+6. [section-06 : 웹 페이지 배포하기 (S3, Cloudfront)](https://github.com/hyewon218/aws-study/blob/master/docs/section-05.md)

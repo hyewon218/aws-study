@@ -6,7 +6,7 @@
 트래픽(부하)를 적절하게 분배해주는 장치를 보고 전문적인 용어로 로드밸런서(Load Balancer)라고 부른다.<br> 
 서버를 2대 이상 가용할 때 ELB를 필수적으로 도입하게 된다. 
 
-<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/b2044505-6f5b-4f91-8f0b-eb949f3ef7b0" width="40%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/b2044505-6f5b-4f91-8f0b-eb949f3ef7b0" width="30%"/><br>
 
 > 하지만 지금은 ELB의 로드밸런서 기능을 사용하지 않고, ELB의 부가 기능인 **SSL/TLS(HTTPS)를 적용시키는 방법**에 대해 배울 것이다.
 
@@ -21,11 +21,11 @@
 데이터를 서버와 주고 받을 때 암호화를 시켜서 통신을 한다. 암호화를 하지 않으면 누군가 중간에서 데이터를 가로채서 해킹할 수도 있다. 보안에 좋지 않다.
 2. **사용자 이탈**<br>
 어떤 사이트에 들어갔는데 아래와 같이 보인다면 왠지 믿음직스럽지 못한 사이트라고 생각할 것이다.<br>
-<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/635cd71b-c5ed-4880-b0eb-225107c1633c" width="60%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/635cd71b-c5ed-4880-b0eb-225107c1633c" width="40%"/><br>
 
 ### ✅ 현업에서는 ?
 대부분의 웹 사이트에서 HTTPS를 적용시킨다.<br>
-<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/ce72aa66-eaf6-46ab-a3a6-cf931dbbad09" width="60%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/ce72aa66-eaf6-46ab-a3a6-cf931dbbad09" width="40%"/><br>
 HTTPS 인증을 받은 웹 사이트가 백엔드 서버와 통신하려면, 백엔드 서버의 주소도 HTTPS 인증을 받아야 한다.<br> 
 따라서 백엔드 서버와 통신할 때도 IP 주소로 통신하는 게 아니라, HTTPS 인증을 받은 도메인 주소로 통신을 한다. 
 
@@ -37,9 +37,9 @@ HTTPS 인증을 받은 웹 사이트가 백엔드 서버와 통신하려면, 백
 
 ## ELB를 활용한 아키텍처 구성
 ### ✅ ELB를 활용한 아키텍처 구성
-<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/f4466d76-639d-4dbc-be70-2cc0fcf4b810" width="30%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/f4466d76-639d-4dbc-be70-2cc0fcf4b810" width="20%"/><br>
 ELB 도입 전 아키텍처<br>
-<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/77ffc65f-83d2-4090-b0c9-4e4adfb08f97" width="50%"/><img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/470f0ee1-e531-4c9a-9f9a-ba4157baacf3" width="50%"/><br>
+<img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/77ffc65f-83d2-4090-b0c9-4e4adfb08f97" width="30%"/><img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/470f0ee1-e531-4c9a-9f9a-ba4157baacf3" width="30%"/><br>
 ELB 도입 후 아키텍처<br>
 
 ELB를 사용하기 전의 아키텍처는 사용자들이 EC2의 IP 주소 또는 도메인 주소에 직접 요청을 보내는 구조였다.
@@ -58,9 +58,9 @@ ELB를 사용하기 전의 아키텍처는 사용자들이 EC2의 IP 주소 또�
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/bff145d7-7d90-469e-ae72-be5eddc66efc" width="60%"/><br>
 
 **2.2. 로드 밸런서 유형 선택하기**
-3가지 로드 밸런서 유형 중 Application Load Balancer(ALB)를 선택하면 된다.
+3가지 로드 밸런서 유형 중 Application Load Balancer(ALB)를 선택하면 된다.<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/ea91ef51-0b3d-43d7-b301-fe72a367b312" width="60%"/><br>
-**참고)** **Application Load Balancer를 선택한 이유**를 간단하게 들자면 **HTTP, HTTPS에 대한 특징을 활용하기 위함**이다.
+**참고)** **Application Load Balancer를 선택한 이유**를 간단하게 들자면 **HTTP, HTTPS에 대한 특징을 활용하기 위함**이다.<br>
 Application Load Balancer, Network Load Balancer, Gateway Load Balancer의 차이를 아는 건 AWS 입문자 입장에서 크게 중요한 부분이 아니다.<br> 
 그러니 Application Load Balancer를 선택한 이유가 이해되지 않아도 넘어가도 괜찮다.
 
@@ -116,21 +116,20 @@ ELB가 사용자로부터 트래픽을 받아 대상 그룹에게 어떤 방식�
 
 4. 상태 검사 설정하기<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/1e9cb141-b265-4323-bbe5-a05fb3fa7d68" width="60%"/><br>
-ELB의 부가 기능으로 상태 검사(= Health Check, 헬스 체크) 기능이 있다. 이 기능은 굉장히 중요한 기능 중 하나이므로 확실하게 짚고 넘어가자. 
-
-실제 ELB로 들어온 요청을 대상 그룹에 있는 여러 EC2 인스턴스로 전달하는 역할을 가진다.<br> 
-(@ELB를 활용한 아키텍처 구성) 그런데 만약 특정 EC2 인스턴스 내에 있는 서버가 예상치 못한 에러로 고장났다고 가정해보자.<br> 
-그럼 ELB 입장에서 고장난 서버한테 요청(트래픽)을 전달하는 게 비효율적인 행동이다. 
-
-이런 상황을 방지하기 위해 ELB는 주기적으로(기본 30초 간격) 대상 그룹에 속해있는 각각의 EC2 인스턴스에 요청을 보내본다.<br> 
-그 요청에 대한 200번대(HTTP Status Code) 응답이 잘 날라온다면 서버가 정상적으로 잘 작동되고 있다고 판단한다.<br> 
-만약 요청을 보냈는데 200번대의 응답이 날라오지 않는다면 서버가 고장났다고 판단해서, ELB가 고장났다고 판단한 EC2 인스턴스로는 요청(트래픽)을 보내지 않는다.
-
-이러한 작동 과정을 통해 조금 더 효율적인 요청(트래픽)의 분배가 가능해진다. 
-
-
-위에서 설정한 값을 해석해보자면, 대상 그룹의 각각의 EC2 인스턴스에 `GET /health`(HTTP 프로토콜 활용)으로 요청을 보내게끔 설정한 것이다.<br> 
-정상적인 헬스 체크 기능을 위해 EC2 인스턴스에서 작동하고 있는 백엔드 서버에 Health Check용 API를 만들어야 한다. 뒤에서 곧 만들 예정이다. 
+> ELB의 부가 기능으로 상태 검사(= Health Check, 헬스 체크) 기능이 있다. 이 기능은 굉장히 중요한 기능 중 하나이므로 확실하게 짚고 넘어가자.<br>
+>
+> 실제 ELB로 들어온 요청을 대상 그룹에 있는 여러 EC2 인스턴스로 전달하는 역할을 가진다.<br> 
+> (@ELB를 활용한 아키텍처 구성) 그런데 만약 특정 EC2 인스턴스 내에 있는 서버가 예상치 못한 에러로 고장났다고 가정해보자.<br> 
+> 그럼 ELB 입장에서 고장난 서버한테 요청(트래픽)을 전달하는 게 비효율적인 행동이다. 
+>
+> 이런 상황을 방지하기 위해 ELB는 주기적으로(기본 30초 간격) 대상 그룹에 속해있는 각각의 EC2 인스턴스에 요청을 보내본다.<br> 
+> 그 요청에 대한 200번대(HTTP Status Code) 응답이 잘 날라온다면 서버가 정상적으로 잘 작동되고 있다고 판단한다.<br> 
+> 만약 요청을 보냈는데 200번대의 응답이 날라오지 않는다면 서버가 고장났다고 판단해서, ELB가 고장났다고 판단한 EC2 인스턴스로는 요청(트래픽)을 보내지 않는다.
+> 
+> 이러한 작동 과정을 통해 조금 더 효율적인 요청(트래픽)의 분배가 가능해진다. 
+>
+> 위에서 설정한 값을 해석해보자면, 대상 그룹의 각각의 EC2 인스턴스에 `GET /health`(HTTP 프로토콜 활용)으로 요청을 보내게끔 설정한 것이다.<br> 
+> 정상적인 헬스 체크 기능을 위해 EC2 인스턴스에서 작동하고 있는 백엔드 서버에 Health Check용 API를 만들어야 한다. 뒤에서 곧 만들 예정이다. 
 
 5. 대상 등록하기<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/89f5bc08-8890-49a0-8b6a-08715f9db1c0" width="60%"/><br>
