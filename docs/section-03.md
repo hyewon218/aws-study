@@ -18,7 +18,7 @@
 ### ✅ HTTPS ? 
 > HTTPS를 적용시켜야 하는 이유는 무엇일까? 
 1. **보안적인 이유**<br>
-데이터를 서버와 주고 받을 때 암호화를 시켜서 통신을 한다. 암호화를 하지 않으면 누군가 중간에서 데이터를 가로채서 해킹할 수도 있다. 보안에 좋지 않다.
+데이터를 서버와 주고 받을 때 **암호화**를 시켜서 통신을 한다. 암호화를 하지 않으면 누군가 중간에서 데이터를 가로채서 해킹할 수도 있다. 보안에 좋지 않다.
 2. **사용자 이탈**<br>
 어떤 사이트에 들어갔는데 아래와 같이 보인다면 왠지 믿음직스럽지 못한 사이트라고 생각할 것이다.<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/635cd71b-c5ed-4880-b0eb-225107c1633c" width="40%"/><br>
@@ -27,7 +27,7 @@
 대부분의 웹 사이트에서 HTTPS를 적용시킨다.<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/ce72aa66-eaf6-46ab-a3a6-cf931dbbad09" width="40%"/><br>
 HTTPS 인증을 받은 웹 사이트가 백엔드 서버와 통신하려면, 백엔드 서버의 주소도 HTTPS 인증을 받아야 한다.<br> 
-따라서 백엔드 서버와 통신할 때도 IP 주소로 통신하는 게 아니라, HTTPS 인증을 받은 도메인 주소로 통신을 한다. 
+따라서 백엔드 서버와 통신할 때도 IP 주소로 통신하는 게 아니라, **HTTPS 인증을 받은 도메인 주소로 통신**을 한다. 
 
 주로 도메인을 구성할 때 아래와 같이 많이 구성한다.
 - 웹 사이트 주소 : `**https**://jscode-edu.co.kr`
@@ -42,9 +42,9 @@ ELB 도입 전 아키텍처<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/77ffc65f-83d2-4090-b0c9-4e4adfb08f97" width="30%"/><img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/470f0ee1-e531-4c9a-9f9a-ba4157baacf3" width="30%"/><br>
 ELB 도입 후 아키텍처<br>
 
-ELB를 사용하기 전의 아키텍처는 사용자들이 EC2의 IP 주소 또는 도메인 주소에 직접 요청을 보내는 구조였다.
-하지만 ELB를 추가적으로 도입함으로써 사용자들이 EC2에 직접적으로 요청을 보내지 않고 `ELB`를 향해 요청을 보내도록 구성할 것이다.<br> 
-그래서 EC2 달았던 도메인도 ELB에 달 것이고, HTTPS도 ELB의 도메인에 적용시킬 예정이다.
+> ELB를 사용하기 전의 아키텍처는 사용자들이 EC2의 IP 주소 또는 도메인 주소에 직접 요청을 보내는 구조였다.<br>
+> 하지만 ELB를 추가적으로 도입함으로써 사용자들이 EC2에 직접적으로 요청을 보내지 않고 `ELB`를 향해 요청을 보내도록 구성할 것이다.<br> 
+> 그래서 EC2 달았던 **도메인도 ELB에** 달 것이고(ELB->EC2), **HTTPS도 ELB의 도메인에** 적용시킬 예정이다.
 
 <br>
 
@@ -97,12 +97,12 @@ Application Load Balancer, Network Load Balancer, Gateway Load Balancer의 차�
 
 ## [실습] 3. ELB 셋팅하기 - 리스너 및 라우팅 / 헬스 체크
 ### ✅ 1. 대상 그룹(Target Group) 설정하기
-리스너 및 라우팅 설정은 ELB로 들어온 요청을 어떤 EC2 인스턴스에 전달할 건지를 설정하는 부분이다. 
+리스너 및 라우팅 설정은 ELB로 들어온 요청을 **어떤 EC2 인스턴스에 전달할 건지**를 설정하는 부분이다. 
 
 1. .<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/eda2299c-c446-4ca8-adb6-85fca9fab278" width="60%"/><br>
-ELB로 들어온 요청을 ‘어떤 곳’으로 전달해야 하는데, 여기서 ‘어떤 곳’을 대상 그룹(Target Group)이라고 표현한다.<br> 
-즉, ELB로 들어온 요청을 어디로 보낼 지 대상 그룹을 만들어야 한다. 
+ELB로 들어온 요청을 ‘어떤 곳’으로 전달해야 하는데, 여기서 **‘어떤 곳’** 을 대상 그룹(Target Group)이라고 표현한다.<br> 
+즉, ELB로 들어온 요청을 어디로 보낼지 대상 그룹을 만들어야 한다. 
 
 2. 대상 유형 선택하기<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/a5ff594f-430e-4611-9b90-387e063de4b3" width="60%"/><br>
@@ -111,7 +111,7 @@ ELB로 들어온 요청을 ‘어떤 곳’으로 전달해야 하는데, 여기
 3. 프토토콜, IP 주소 유형, 프로토콜 버전 설정<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/62a054e6-86f9-48b1-9c62-6869b8c5be77" width="60%"/><br>
 
-ELB가 사용자로부터 트래픽을 받아 대상 그룹에게 어떤 방식으로 전달할 지 설정하는 부분이다. <br>
+ELB가 사용자로부터 트래픽을 받아 대상 그룹에게 어떤 방식으로 전달할지 설정하는 부분이다. <br>
 위 그림은 HTTP(HTTP1), 80번 포트, IPv4 주소로 통신을 한다는 걸 뜻한다. 이 방식이 흔하게 현업에서 많이 쓰이는 셋팅 방법이다. 
 
 4. 상태 검사 설정하기<br>
@@ -181,10 +181,11 @@ ELB가 사용자로부터 트래픽을 받아 대상 그룹에게 어떤 방식�
 <br>
 
 ## [실습] 6. ELB에 HTTPS 설정하기
-### ✅ 1. ELB의 리스너 및 규칙 수정하기
+### ✅1. ELB의 리스너 및 규칙 수정하기
 1. **HTTPS에 대한 리스너 추가하기**<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/8e9a61f9-1abf-4b5d-91cf-3663e1e9e82f" width="60%"/><br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/a45fb182-723d-4bf7-ad58-7ad78185d6d0" width="60%"/><br>
+- 433 포트로 요청이 들어온다면 그 요청에 대해서 대상그룹에 트래픽을 전달해 주겠다.<br>
 <img src="https://github.com/hyewon218/kim-jpa2/assets/126750615/dbb479e1-e0e4-463d-83b6-768abf5eff58" width="60%"/><br>
 > 위와 같이 설정하면 HTTPS가 한 5초 정도 있다가 바로 적용된다.
 
